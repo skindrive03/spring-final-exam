@@ -26,8 +26,8 @@
     </div>
     <div class="container mt-5">
         <h1 class="mt-5">Edicion de libros</h1>
-        <form action="/library/books/edit" method="post" id="editForm">
-			<input type="hidden" th:value="${book.id}" id="id" name="id" />
+        <form action="/library/books/edit" method="post">
+			<input type="hidden" th:value="${book.id}" id="idBook" name="idBook" />
             <div class="form-group">
                 <label for="name">Nombre del Libro</label>
                 <input type="text" class="form-control" id="name" name="name"

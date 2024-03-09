@@ -97,13 +97,13 @@ public class LibraryController {
 
 
     @PostMapping("/edit")
-    public String editBook(@RequestParam("id") Long id, 
+    public String editBook(@RequestParam("idBook") Long idBook,
     					   @RequestParam("name") String name,
                            @RequestParam("writer") String writer,
                            @RequestParam("publicationDate") String publicationDate,
                            @RequestParam("idGender") Long idGender, Model model) {
 
-        Book book = bookService.getBookByID(id);
+        Book book = bookService.getBookByID(idBook);
         if (name.length() <= 4 || name.length() >= 60) {
             model.addAttribute("errorMessage", "Nombre de Libro deber tener de 4 a 60 caracteres");
             model.addAttribute("genders", genderService.getAllGender());
@@ -116,6 +116,13 @@ public class LibraryController {
             return "bookEdit";
         }
         book.writer = writer;
+        if (!publicationDate.matches("\\d{2}-\\d{2}-\\d{4}")) {
+            // Si no tiene el formato esperado, muestra un mensaje de error y retorna
+            model.addAttribute("errorMessage", "La fecha de publicación debe tener el formato dd-MM-yyyy");
+            model.addAttribute("book", book);
+            model.addAttribute("genders", genderService.getAllGender());
+            return "bookEdit";
+        }
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         try {
             book.publicationDate = format.parse(publicationDate);
