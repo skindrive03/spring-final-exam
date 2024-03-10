@@ -61,7 +61,7 @@
                     <div class="col-md-1" th:text="${book.id}"></div>
                     <div class="col-md-3" th:text="${book.name}"></div>
                     <div class="col-md-2" th:text="${book.writer}"></div>
-                    <div class="col-md-2" th:text="${book.publicationDate}"></div>
+                    <div class="col-md-2" th:text="${#dates.format(book.publicationDate, 'dd-MM-yyyy')}"></div>
                     <div class="col-md-2" th:text="${book.gender.name}"></div>
                     <div class="col-md-2">					
 						<a th:href="@{'/library/books/edit/' + ${book.id} }" class="btn btn-warning">Editar</a>
