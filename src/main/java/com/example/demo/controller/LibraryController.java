@@ -81,7 +81,7 @@ public class LibraryController {
         model.addAttribute("books", bookList);
         model.addAttribute("genders", genderService.getAllGender());
 
-        return "books";
+        return "redirect:/library/books/all";
     }
 
     @GetMapping("/edit/{id}")
@@ -140,7 +140,7 @@ public class LibraryController {
         model.addAttribute("books", bookList);
         model.addAttribute("genders", genderService.getAllGender());
 
-        return "books";
+        return "redirect:/library/books/all";
     }
 
     @GetMapping("/delete/{id}")
@@ -151,7 +151,7 @@ public class LibraryController {
         model.addAttribute("books", bookList);
         model.addAttribute("genders", genderService.getAllGender());
 
-        return "books";
+        return "redirect:/library/books/all";
     }
 
 
