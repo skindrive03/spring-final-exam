@@ -44,6 +44,8 @@ public class ReportController {
 	    for (Book book : books) {
 	    	bookReports.add(new BookReport(book.id, book.name, book.writer, book.publicationDate, book.gender.name));
 	    }
+
+		params.put("count", bookReports.size());
 	    
 	    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookReports);
 	    JasperReport jasperReport = (JasperReport) JRLoader.loadObject(jasperStream);
